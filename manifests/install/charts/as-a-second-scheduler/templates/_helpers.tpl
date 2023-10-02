@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "scheduler-plugins-as-a-second-scheduler.name" -}}
+{{- define "whatif-agent-as-a-second-scheduler.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "scheduler-plugins-as-a-second-scheduler.fullname" -}}
+{{- define "whatif-agent-as-a-second-scheduler.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "scheduler-plugins-as-a-second-scheduler.chart" -}}
+{{- define "whatif-agent-as-a-second-scheduler.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "scheduler-plugins-as-a-second-scheduler.labels" -}}
-helm.sh/chart: {{ include "scheduler-plugins-as-a-second-scheduler.chart" . }}
-{{ include "scheduler-plugins-as-a-second-scheduler.selectorLabels" . }}
+{{- define "whatif-agent-as-a-second-scheduler.labels" -}}
+helm.sh/chart: {{ include "whatif-agent-as-a-second-scheduler.chart" . }}
+{{ include "whatif-agent-as-a-second-scheduler.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,8 +45,8 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "scheduler-plugins-as-a-second-scheduler.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "scheduler-plugins-as-a-second-scheduler.name" . }}
+{{- define "whatif-agent-as-a-second-scheduler.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "whatif-agent-as-a-second-scheduler.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 

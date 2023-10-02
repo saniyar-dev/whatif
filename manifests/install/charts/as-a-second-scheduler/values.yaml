@@ -2,18 +2,12 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-scheduler:
-  name: scheduler-plugins-scheduler
-  image: saniyardev/scheduler-plugins-scheduler:0.5
-  namespace: scheduler-plugins
+whatif-agent:
+  name: whatif-agent
+  image: saniyardev/whatif-agent:latest
+  namespace: whatif-agent
   replicaCount: 1
   leaderElect: false
-
-controller:
-  name: scheduler-plugins-controller
-  image: saniyardev/scheduler-plugins-controller:0.5
-  namespace: scheduler-plugins
-  replicaCount: 1
 
 # LoadVariationRiskBalancing and TargetLoadPacking are not enabled by default
 # as they need extra RBAC privileges on metrics.k8s.io.
@@ -21,27 +15,4 @@ controller:
 plugins:
   default: [ "PrioritySort" ]
   enabled: [ "Whatif" ]
-  disabled:
-    [
-      "Coscheduling",
-      "CapacityScheduling",
-      "NodeResourceTopologyMatch",
-      "NodeResourcesAllocatable"
-    ]
-
-# Customize the enabled plugins' config.
-# Refer to the "pluginConfig" section of manifests/<plugin>/scheduler-config.yaml.
-# For example, for Coscheduling plugin, you want to customize the permit waiting timeout to 10 seconds:
-pluginConfig:
-  - name: Whatif
-    args:
-      permitWaitingTimeSeconds: 10 # default is 60
-  # - name: Coscheduling
-  #   args:
-  #     permitWaitingTimeSeconds: 10 # default is 60
-
-  # Or, customize the other plugins
-  # - name: NodeResourceTopologyMatch
-  #   args:
-  #     scoringStrategy:
-  #       type: MostAllocated # default is LeastAllocated
+  disabled: []

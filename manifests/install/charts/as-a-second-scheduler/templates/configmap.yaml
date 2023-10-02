@@ -14,15 +14,6 @@ data:
     # Compose all plugins in one profile
     - schedulerName: {{ .Values.whatif-agent.name }}
       plugins:
-        multiPoint:
-          # enabled:
-          # {{- range $.Values.plugins.default }}
-          # - name: {{ title . }}
-          # {{- end }}
-          disabled:
-          {{- range $.Values.plugins.disabled }}
-          - name: {{ title . }}
-          {{- end }}
         permit:
           enabled:
           {{- range $.Values.plugins.enabled }}
@@ -32,9 +23,6 @@ data:
           {{- range $.Values.plugins.disabled }}
           - name: {{ title . }}
           {{- end }}
-      {{- if $.Values.pluginConfig }}
-      pluginConfig: {{ toYaml $.Values.pluginConfig | nindent 6 }}
-      {{- end }}
 
   {{- /* TODO: wire CRD installation with enabled plugins. */}}
 {{- end }}

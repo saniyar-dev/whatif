@@ -3,13 +3,13 @@ kind: Deployment
 metadata:
   labels:
     component: whatif-agent
-  name: { { .Values.whatifAgent.name } }
-  namespace: { { .Values.whatifAgent.namespace } }
+  name: {{ .Values.whatifAgent.name }}
+  namespace: {{ .Values.whatifAgent.namespace }}
 spec:
   selector:
     matchLabels:
       component: whatif-agent
-  replicas: { { .Values.whatifAgent.replicaCount } }
+  replicas: {{ .Values.whatifAgent.replicaCount }}
   template:
     metadata:
       labels:
@@ -20,7 +20,7 @@ spec:
         - command:
             - /bin/kube-scheduler
             - --config=/etc/kubernetes/scheduler-config.yaml
-          image: { { .Values.whatifAgent.image } }
+          image: {{ .Values.whatifAgent.image }}
           livenessProbe:
             httpGet:
               path: /healthz

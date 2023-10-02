@@ -2,13 +2,16 @@ ARCHS = amd64 arm64
 COMMONENVVAR=GOOS=$(shell uname -s | tr A-Z a-z)
 BUILDENVVAR=CGO_ENABLED=0
 
+
+LOCAL_REGISTRY=saniyardev
+LOCAL_IMAGE=whatif-agent:latest
+
 # RELEASE_REGISTRY is the container registry to push
 # into. The default is to push to the staging
 # registry, not production(k8s.gcr.io).
 RELEASE_REGISTRY?=saniyardev
 RELEASE_VERSION?=v$(shell date +%Y%m%d)-$(shell git describe --tags --match "v*")
-RELEASE_IMAGE:=whatif-scheduler:$(RELEASE_VERSION)
-# LOCAL_REGISTRY=saniyardev
+RELEASE_IMAGE:=whatif-agent:$(RELEASE_VERSION)
 
 # VERSION is the scheduler's version
 #

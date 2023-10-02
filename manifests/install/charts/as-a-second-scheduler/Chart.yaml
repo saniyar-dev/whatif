@@ -1,6 +1,6 @@
 apiVersion: v2
-name: scheduler-plugins
-description: deploy scheduler plugin as a second scheduler in cluster
+name: whatif-agent
+description: deploy whatif-agent as a second scheduler in cluster
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -21,4 +21,3 @@ version: 0.23.10
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 appVersion: 0.23.10
-

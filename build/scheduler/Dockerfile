@@ -7,7 +7,7 @@ ARG ARCH
 ARG RELEASE_VERSION
 RUN RELEASE_VERSION=${RELEASE_VERSION} make build-scheduler.$ARCH
 
-FROM $ARCH/alpine:3.16
+FROM hub.hamdocker.ir/$ARCH/alpine:3.16
 
 COPY --from=0 /go/src/github.com/saniyar-dev/whatif/bin/kube-scheduler /bin/kube-scheduler
 
